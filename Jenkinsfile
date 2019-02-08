@@ -5,6 +5,7 @@ pipeline {
             steps {
             checkout scm
               sh '''
+env
 export PATH=$PATH:/usr/local/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims
 eval "$(rbenv init -)"
 rbenv local 2.6.0
