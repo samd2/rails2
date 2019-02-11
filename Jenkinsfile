@@ -36,6 +36,15 @@ script {
         	when {
 			branch 'master'
     			}
+               input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+
             steps {
              step([$class: 'AWSEBDeploymentBuilder', zeroDowntime: false, 
  awsRegion: 'eu-central-1', applicationName: 'Rails1', environmentName: 'Rails1-env-master', rootObject: ".",
