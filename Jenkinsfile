@@ -34,7 +34,7 @@ script {
         }
         stage('Deploy-Master') {
         	when {
-			branch: master
+			branch 'master'
     			}
             steps {
              step([$class: 'AWSEBDeploymentBuilder', zeroDowntime: false, 
@@ -45,7 +45,7 @@ script {
         }
        stage('Deploy-staging') {
                 when {
-			branch: staging
+			branch 'staging'
                         }
             steps {
              step([$class: 'AWSEBDeploymentBuilder', zeroDowntime: false,
