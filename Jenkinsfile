@@ -36,8 +36,6 @@ script {
         	when {
 			branch 'master'
     			}
-            }
-
             steps {
              step([$class: 'AWSEBDeploymentBuilder', zeroDowntime: false, 
  awsRegion: 'eu-central-1', applicationName: 'Rails1', environmentName: 'Rails1-env-master', rootObject: ".",
@@ -56,7 +54,6 @@ script {
  ])
             }
         }
-
    }
 }
 
