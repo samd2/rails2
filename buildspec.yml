@@ -1,0 +1,36 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      #- echo Starting postgresql...
+      #- service postgresql restart
+      #- echo Installing Bundler...
+      #- gem install bundler
+      #- bundle install --with test
+      - apt update
+      - apt install -y nodejs
+      - apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+      - apt-get install -y libsqlite3-dev
+      - git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+      - git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+      - export PATH=$PATH:/usr/local/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims
+      - eval "$(rbenv init -)"
+      - rbenv install 2.6.0
+      - rbenv local 2.6.0
+      - rbenv rehash
+      - export DISABLE_SPRING=1
+      - gem install bundler
+      - bundle install --with test
+  pre_build:
+    commands:
+      #- echo Preparing database to run tests...
+      #- cp config/database.yml.example config/database.yml
+      #- RAILS_ENV=test bundle exec rake db:setup
+      #- RAILS_ENV=test bundle exec rake db:migrate
+  build:
+    commands:
+      #- echo Running rspec tests...
+      #- bundle exec rspec spec/
+      - chmod 777 bin/rails
+      - bin/rails test
