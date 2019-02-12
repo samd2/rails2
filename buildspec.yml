@@ -1,5 +1,9 @@
 version: 0.1
 
+env:
+  variables:
+    PATH: $PATH:/usr/local/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims
+
 phases:
   install:
     commands:
