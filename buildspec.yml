@@ -20,6 +20,8 @@ phases:
       - git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
       - export PATH=$PATH:/usr/local/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims
       - PATH=$PATH:/usr/local/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims
+      - BLABBER=3
+      - export BLIBBER=4
       - env
       - eval "$(rbenv init -)"
       - env
